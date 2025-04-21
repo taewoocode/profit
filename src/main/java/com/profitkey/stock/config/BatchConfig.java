@@ -5,8 +5,10 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.repeat.RepeatStatus;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 import com.profitkey.stock.repository.stock.StockRepository;
 import com.profitkey.stock.service.stock.StockService;
@@ -34,6 +36,7 @@ public class BatchConfig {
 	}
 
 	@Bean
+	@Qualifier("createStockInfoJob")
 	public Job createStockInfoJob() {
 		return new JobBuilder("createStockInfoJob", jobRepository)
 			.start(createStockInfoStep())

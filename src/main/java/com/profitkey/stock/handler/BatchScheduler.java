@@ -9,6 +9,7 @@ import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +17,10 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class BatchScheduler {
 	private final JobLauncher jobLauncher;
+
+	@Qualifier("createStockInfoJob")
 	private final Job stockJob;
+
 
 	@Scheduled(cron = "0 0 0 * * ?")
 	void deleteProblemJob() throws JobExecutionAlreadyRunningException, JobRestartException,

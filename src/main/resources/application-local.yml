@@ -79,6 +79,6 @@ server:
   port: 80
 
 property:
-  exchange: ${STOCK_EXCHANGE_AUTH_KEY}
+  exchange: ${ STOCK_EXCHANGE_AUTH_KEY}
   authKey: ${STOCK_EXCHANGE_DATA}
   data: AP01

@@ -1,10 +1,14 @@
 package com.profitkey.stock.util;
 
-import com.example.springbatch.dto.ExchangeDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.profitkey.stock.dto.ExchangeDto;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.DefaultUriBuilderFactory;
@@ -27,7 +31,14 @@ public class ExchangeUtils {
 
     private final String searchDate = getSearchDate();
 
-    WebClient webClient;
+    private WebClient webClient;
+
+    @Autowired
+    public ExchangeUtils(WebClient.Builder webClientBuilder) {
+        this.webClient = webClientBuilder.baseUrl("https://www.koreaexim.go.kr")
+            .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+            .build();
+    }
 
     /*
         Open API 개발명세의 요청 URL (Request URL) + 요청변수 형식을 구성하여 Get 방식을 사용하였습니다.

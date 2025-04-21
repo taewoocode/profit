@@ -68,10 +68,10 @@ public class StockController {
 	}
 
 	// 배치 테스트용
-	@GetMapping("/createStockInfo")
-	public void createStockInfoJob()
-		throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException,
-		JobRestartException {
-		batchScheduler.runJob();
-	}
+	// @GetMapping("/createStockInfo")
+	// public void createStockInfoJob()
+	// 	throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException,
+	// 	JobRestartException {
+	// 	batchScheduler.runJob();
+	// }
 }
