@@ -64,6 +64,10 @@ dependencies {
 
     // Spring Batch
     implementation 'org.springframework.boot:spring-boot-starter-batch'
+
+    // Spring Reactive
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
 }
 
 tasks.named('test') {
