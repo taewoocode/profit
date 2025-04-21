@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: apitest
+
+  config:
+    activate:
+      on-profile:
+
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:mem:testdb
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+
+  batch:
+    jdbc:
+      initialize-schema: always
+
+property:
+  exchange:
+    authKey: WaVgS0YvXfRKVyxNd8F3I1cjf2gL1vVB
+    data: AP01
